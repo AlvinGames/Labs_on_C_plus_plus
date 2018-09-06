@@ -1,0 +1,124 @@
+#pragma once
+
+#ifndef __STRING_HPP__
+#define __STRING_HPP__
+
+////////////////////////////////////////////////////////////
+// Headers
+////////////////////////////////////////////////////////////
+#include<iostream>
+
+namespace std
+{
+	///////////////////////////////////////////////////////
+	///Класс, позволяющий работать
+	///со строками
+	///////////////////////////////////////////////////////
+	class String
+	{
+	public:
+		///////////////////////////////////////////////////////
+		///Конструктор по умолчанию
+		///создаёт пустую строку
+		///
+		///////////////////////////////////////////////////////
+		String();
+
+		///////////////////////////////////////////////////////
+		///Конструктор по умолчанию
+		///создаёт пустую строку заданной длины
+		///
+		///////////////////////////////////////////////////////
+		String(const unsigned int length);
+
+		///////////////////////////////////////////////////////
+		///Конструктор инициализации
+		///инициализирукт строку массивом символов
+		///
+		///////////////////////////////////////////////////////
+		String(const char* str);
+
+		///////////////////////////////////////////////////////
+		///Конструктор копирования
+		///
+		///////////////////////////////////////////////////////
+		String(const String& other);
+
+		///////////////////////////////////////////////////////
+		///Конструктор переноса
+		///
+		///////////////////////////////////////////////////////
+		String(String &&other);
+
+		~String();
+
+		///////////////////////////////////////////////////////
+		///Оператор присваевания строки
+		///
+		///////////////////////////////////////////////////////
+		String& operator = (const String& other);
+
+		///////////////////////////////////////////////////////
+		///Оператор присваевания константной строки
+		///
+		///////////////////////////////////////////////////////
+		String& operator = (const char* other);
+
+
+		///////////////////////////////////////////////////////
+		///Оператор присваевающей
+		///конкатенации
+		///////////////////////////////////////////////////////
+		String& operator += (const String& other);
+
+		///////////////////////////////////////////////////////
+		///Оператор индексирующего обращения
+		///
+		///////////////////////////////////////////////////////
+		char& operator [] (const int index);
+
+		///////////////////////////////////////////////////////
+		///Оператор индексирующего обращения
+		///
+		///////////////////////////////////////////////////////
+		const char& operator [] (const int index) const;
+
+		///////////////////////////////////////////////////////
+		///Возвращает длину строки
+		///без нультерминального символа
+		///
+		///////////////////////////////////////////////////////
+		int length() const;
+
+
+		friend String			operator +		(const String& left, const String& right);
+		friend String			operator +		(const String& left, const char* right);
+		friend String			operator +		(const char* left, const String& right);
+		friend const bool		operator ==		(const String& left, const String& right);
+		friend std::ostream&	operator <<		(std::ostream& out, const String& str);
+		friend std::istream&	operator >>		(std::istream& in, String& line);
+
+	private:
+		int		size;
+		char*	str;
+	};
+
+	String operator + (const String& left, const String& right);
+
+	String operator + (const String& left, const char* right);
+
+	String operator + (const char* left, const String& right);
+
+	const bool operator == (const String& left, const String& right);
+
+	const bool operator != (const String& left, const String& right);
+
+	std::ostream& operator << (std::ostream& out, const String& line);
+
+	std::istream& operator >> (std::istream& in, const String& line);
+
+} // namespace std
+
+#endif // !__STRING_HPP__
+
+

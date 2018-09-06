@@ -1,0 +1,3 @@
+1 Timofey Kanatush Pavlovich 19 man 1 7.6
+2 Liliya Kanatush Pavlovna 17 woman 1 10
+3 Eugen Torop Alexandrovich 18 man 1 6.6
